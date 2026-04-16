@@ -58,8 +58,11 @@ class ProductModelService {
 			return self::$models_cache[ $cache_key ];
 		}
 
-		$result                            = $this->repository->find_by_product_id( $product_id, $active_only );
-		self::$models_cache[ $cache_key ] = $result;
+		$result = $this->repository->find_by_product_id( $product_id, $active_only );
+
+		if ( ! empty( $result ) ) {
+			self::$models_cache[ $cache_key ] = $result;
+		}
 
 		return $result;
 	}
