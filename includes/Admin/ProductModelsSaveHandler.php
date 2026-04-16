@@ -155,6 +155,5 @@ class ProductModelsSaveHandler {
 			$this->service->delete_model( (int) $delete_id );
 		}
 
-		ProductModelService::clear_models_cache( $post_id );
 	}
 }

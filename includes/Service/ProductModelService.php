@@ -18,13 +18,6 @@ defined( 'ABSPATH' ) || exit;
 class ProductModelService {
 
 	/**
-	 * Cache em memória de modelos por produto.
-	 *
-	 * @var array<string, array<int, ProductModel>>
-	 */
-	private static array $models_cache = [];
-
-	/**
 	 * Repositório.
 	 *
 	 * @var ProductModelRepository
@@ -52,34 +45,7 @@ class ProductModelService {
 			return array();
 		}
 
-		$cache_key = $product_id . '_' . ( $active_only ? '1' : '0' );
-
-		if ( isset( self::$models_cache[ $cache_key ] ) ) {
-			return self::$models_cache[ $cache_key ];
-		}
-
-		$result = $this->repository->find_by_product_id( $product_id, $active_only );
-
-		if ( ! empty( $result ) ) {
-			self::$models_cache[ $cache_key ] = $result;
-		}
-
-		return $result;
-	}
-
-	/**
-	 * Invalida o cache de modelos para um produto ou para todos.
-	 *
-	 * @param int $product_id ID do produto (0 = limpa tudo).
-	 * @return void
-	 */
-	public static function clear_models_cache( int $product_id = 0 ): void {
-		if ( $product_id > 0 ) {
-			unset( self::$models_cache[ $product_id . '_0' ] );
-			unset( self::$models_cache[ $product_id . '_1' ] );
-		} else {
-			self::$models_cache = array();
-		}
+		return $this->repository->find_by_product_id( $product_id, $active_only );
 	}
 
 	/**
