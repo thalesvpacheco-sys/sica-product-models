@@ -1,0 +1,129 @@
+.spm-front {
+  width: 100%;
+}
+
+.spm-front__selector {
+  width: 100%;
+}
+
+.spm-front__label {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.spm-front__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.spm-front__option,
+.spm-front__reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid #0b6ea8;
+  border-radius: 10px;
+  background: #fff;
+  color: #0b6ea8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.spm-front__option:hover,
+.spm-front__reset:hover {
+  background: #4aa3d8;
+  border-color: #4aa3d8;
+  color: #fff;
+}
+
+.spm-front__option.is-active {
+  background: #4aa3d8;
+  border-color: #4aa3d8;
+  color: #fff;
+}
+
+.spm-front__hint {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 13px;
+  color: #5f6b76;
+}
+
+.spm-front__option.is-navigating,
+.spm-front__reset.is-navigating {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+[data-spm-long-description] {
+  line-height: 1.7;
+}
+
+[data-spm-long-description] p {
+  margin: 0 0 18px !important;
+  line-height: 1.7;
+}
+
+[data-spm-long-description] p:last-child {
+  margin-bottom: 0 !important;
+}
+
+[data-spm-long-description] p:empty {
+  display: block;
+  min-height: 18px;
+}
+
+[data-spm-long-description] ul,
+[data-spm-long-description] ol {
+  margin: 0 0 18px 22px !important;
+  padding-left: 18px !important;
+}
+
+[data-spm-long-description] li {
+  margin-bottom: 8px !important;
+  line-height: 1.7;
+}
+
+[data-spm-long-description] h1,
+[data-spm-long-description] h2,
+[data-spm-long-description] h3,
+[data-spm-long-description] h4,
+[data-spm-long-description] h5,
+[data-spm-long-description] h6 {
+  margin: 28px 0 14px !important;
+  line-height: 1.3;
+}
+
+[data-spm-long-description] img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+}
+
+[data-spm-long-description] strong {
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .spm-front__option,
+  .spm-front__reset {
+    text-align: center;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  [data-spm-long-description] {
+    line-height: 1.65;
+  }
+
+  .spm-front__options {
+    gap: 8px;
+  }
+}

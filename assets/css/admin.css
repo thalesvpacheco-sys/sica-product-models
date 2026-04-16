@@ -1,0 +1,269 @@
+.spm-admin {
+  margin-top: 12px;
+}
+
+.spm-admin__intro {
+  margin-bottom: 16px;
+}
+
+.spm-admin__toolbar {
+  margin-bottom: 16px;
+}
+
+.spm-models-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.spm-model-card {
+  border: 1px solid #dcdcde;
+  background: #fff;
+}
+
+.spm-model-card.is-editing-description {
+  border-color: #2271b1;
+  box-shadow: 0 0 0 1px #2271b1;
+}
+
+.spm-model-card--placeholder {
+  border: 2px dashed #2271b1;
+  background: #f6fbff;
+  min-height: 80px;
+}
+
+.spm-model-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #dcdcde;
+  background: #f6f7f7;
+}
+
+.spm-model-card__drag {
+  cursor: move;
+  font-size: 18px;
+  line-height: 1;
+  color: #50575e;
+  user-select: none;
+}
+
+.spm-model-card__title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spm-model-card__slug-preview {
+  font-size: 12px;
+  color: #646970;
+}
+
+.spm-model-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spm-model-card__body {
+  padding: 16px;
+}
+
+.spm-grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.spm-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.spm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.spm-field label {
+  font-weight: 600;
+}
+
+.spm-field input[type="text"],
+.spm-field select,
+.spm-field textarea {
+  width: 100%;
+}
+
+.spm-field--checkbox {
+  justify-content: flex-end;
+}
+
+.spm-field--checkbox label {
+  font-weight: 400;
+  margin-top: 28px;
+}
+
+.spm-description-summary {
+  padding: 12px;
+  border: 1px solid #dcdcde;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.spm-description-summary__text {
+  color: #50575e;
+}
+
+.spm-description-feedback {
+  display: none;
+  margin-top: 8px;
+  color: #0a7d33;
+  font-weight: 600;
+}
+
+.spm-short-description-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.spm-short-description-status {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+.spm-short-description-status__text {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 4px;
+  background: #f6f7f7;
+  color: #50575e;
+  font-weight: 600;
+}
+
+.spm-short-description-status__text.is-applied {
+  background: #edf7ed;
+  color: #0a7d33;
+}
+
+.spm-short-description-status__text.is-empty {
+  background: #f6f7f7;
+  color: #646970;
+}
+
+.spm-short-description-status__text.is-pending {
+  background: #fff8e5;
+  color: #8a6500;
+}
+
+.spm-short-description-feedback {
+  display: none;
+  margin-top: 8px;
+  color: #0a7d33;
+  font-weight: 600;
+}
+
+.spm-media-box,
+.spm-gallery-box {
+  border: 1px solid #dcdcde;
+  padding: 12px;
+  background: #fcfcfc;
+}
+
+.spm-media-preview,
+.spm-gallery-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 40px;
+  margin-bottom: 12px;
+}
+
+.spm-media-preview img,
+.spm-gallery-preview img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border: 1px solid #dcdcde;
+  background: #fff;
+}
+
+.spm-media-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.spm-description-editor-panel {
+  border: 1px solid #dcdcde;
+  background: #fff;
+  padding: 16px;
+}
+
+.spm-description-editor-panel__header {
+  margin-bottom: 16px;
+}
+
+.spm-description-editor-panel__header h3 {
+  margin: 0 0 8px;
+}
+
+.spm-description-editor-panel__selected {
+  margin: 0;
+  color: #50575e;
+}
+
+.spm-description-editor-panel__footer {
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .spm-grid--2 {
+    grid-template-columns: 1fr;
+  }
+
+  .spm-model-card__header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .spm-model-card__actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .spm-short-description-tools {
+    align-items: stretch;
+  }
+}
+
+.spm-description-summary__text.is-filled {
+  background: #edf7ed;
+  color: #0a7d33;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.spm-description-summary__text.is-empty-desc {
+  background: #f6f7f7;
+  color: #646970;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.spm-model-name.has-error,
+.spm-model-slug.has-error {
+  border-color: #d63638 !important;
+  box-shadow: 0 0 0 1px #d63638;
+}

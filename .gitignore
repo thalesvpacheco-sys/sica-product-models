@@ -1,0 +1,61 @@
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/cache/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/languages/
+wp-content/temp/
+sitemap.xml
+sitemap.xml.gz
+*.log
+
+# Plugin development
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+yarn.lock
+.env
+.env.*
+*.env
+
+# Build artifacts
+/dist/
+/build/
+*.min.js
+*.min.css
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.editorconfig
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+._*
+
+# PHP tools
+.phpcs.xml
+phpcs.xml
+phpunit.xml
+phpunit.xml.dist
+.phpunit.result.cache
+psalm.xml
+phpstan.neon
+
+# Testing
+tests/tmp/
+coverage/
+.nyc_output/
+
+# Claude Code context (internal dev notes)
+CLAUDE.md
