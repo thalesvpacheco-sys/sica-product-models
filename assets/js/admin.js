@@ -651,7 +651,7 @@ jQuery(function ($) {
   function validateRequiredFields() {
     const emptyCards = [];
 
-    $root.find('.spm-model-card').each(function () {
+    $root.find('.spm-model-card').not('.spm-model-template .spm-model-card').each(function () {
       const $card = $(this);
       const name = ($card.find('.spm-model-name').val() || '').trim();
 
@@ -666,7 +666,7 @@ jQuery(function ($) {
   function validateUniqueSlugs() {
     const slugMap = {};
 
-    $root.find('.spm-model-card').each(function () {
+    $root.find('.spm-model-card').not('.spm-model-template .spm-model-card').each(function () {
       const $card = $(this);
       const slug = slugify($card.find('.spm-model-slug').val() || '');
 
@@ -695,7 +695,7 @@ jQuery(function ($) {
   }
 
   $('#post').off('submit.spm').on('submit.spm', function (e) {
-    const $cards = $root.find('.spm-model-card');
+    const $cards = $root.find('.spm-model-card').not('.spm-model-template .spm-model-card');
 
     if (!$cards.length) {
       return;
