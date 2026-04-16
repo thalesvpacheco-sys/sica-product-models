@@ -695,6 +695,12 @@ jQuery(function ($) {
   }
 
   $('#post').off('submit.spm').on('submit.spm', function (e) {
+    const $cards = $root.find('.spm-model-card');
+
+    if (!$cards.length) {
+      return;
+    }
+
     const emptyNameCards = validateRequiredFields();
 
     if (emptyNameCards.length) {
