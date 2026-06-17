@@ -115,55 +115,11 @@ class ProductPage {
 		add_filter( 'woocommerce_product_get_description', array( $this, 'filter_product_description' ), 10, 2 );
 		add_filter( 'woocommerce_short_description', array( $this, 'filter_woocommerce_short_description' ), 20 );
 		add_filter( 'post_thumbnail_id', array( $this, 'filter_post_thumbnail_id' ), 10, 2 );
-		add_filter( 'woocommerce_product_tabs', array( $this, 'filter_product_tabs' ), 98 );
 		add_filter( 'the_content', array( $this, 'filter_the_content' ), 20 );
 		add_filter( 'get_the_excerpt', array( $this, 'filter_get_the_excerpt' ), 20, 2 );
 		add_filter( 'the_excerpt', array( $this, 'filter_the_excerpt' ), 20 );
 
-		$this->register_canonical_overrides();
-
 		$this->runtime_filters_registered = true;
-	}
-
-	/**
-	 * Sobrescreve o canonical para a URL do modelo ativo.
-	 *
-	 * Só executa quando há produto singular e modelo ativo detectado.
-	 *
-	 * @return void
-	 */
-	protected function register_canonical_overrides(): void {
-		if ( ! $this->has_active_model_context() ) {
-			return;
-		}
-
-		$model = $this->current_model;
-
-		remove_action( 'wp_head', 'rel_canonical' );
-
-		if ( defined( 'WPSEO_VERSION' ) ) {
-			add_filter( 'wpseo_canonical', function ( $canonical ) use ( $model ) {
-				return esc_url(
-					home_url( add_query_arg( 'spm_model', $model->get_slug() ) )
-				);
-			} );
-		}
-
-		if ( defined( 'RANK_MATH_VERSION' ) ) {
-			add_filter( 'rank_math/frontend/canonical', function ( $canonical ) use ( $model ) {
-				return esc_url(
-					home_url( add_query_arg( 'spm_model', $model->get_slug() ) )
-				);
-			} );
-		}
-
-		add_action( 'wp_head', function () use ( $model ) {
-			if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
-				echo '<link rel="canonical" href="' . esc_url(
-					home_url( add_query_arg( 'spm_model', $model->get_slug() ) )
-				) . '" />' . "\n";
-			}
-		}, 1 );
 	}
 
 	/**
@@ -379,13 +335,7 @@ class ProductPage {
 			return $content;
 		}
 
-		$html = $this->service->get_model_description_html( $this->current_model );
-
-		if ( '' === $html ) {
-			return $content;
-		}
-
-		return $html;
+		return $this->service->get_model_description_html( $this->current_model );
 	}
 
 	/**
@@ -419,43 +369,6 @@ class ProductPage {
 		}
 
 		return $this->service->get_model_short_description_html( $this->current_model );
-	}
-
-	/**
-	 * Garante que o tab de descrição existe quando o modelo ativo tem descrição.
-	 *
-	 * WooCommerce só adiciona o tab de descrição quando $post->post_content não está vazio.
-	 * Produtos sem descrição original ocultam o tab, impedindo que filter_the_content dispare.
-	 *
-	 * @param array<string, mixed> $tabs Tabs registrados.
-	 * @return array<string, mixed>
-	 */
-	public function filter_product_tabs( array $tabs ): array {
-		if ( ! $this->has_active_model_context() ) {
-			return $tabs;
-		}
-
-		if ( isset( $tabs['description'] ) ) {
-			return $tabs;
-		}
-
-		if ( ! function_exists( 'woocommerce_product_description_tab_content' ) ) {
-			return $tabs;
-		}
-
-		$description = trim( wp_strip_all_tags( (string) $this->current_model->get_description() ) );
-
-		if ( '' === $description ) {
-			return $tabs;
-		}
-
-		$tabs['description'] = array(
-			'title'    => apply_filters( 'woocommerce_product_description_heading', __( 'Description', 'woocommerce' ) ),
-			'priority' => 10,
-			'callback' => 'woocommerce_product_description_tab_content',
-		);
-
-		return $tabs;
 	}
 
 	/**
