@@ -3,7 +3,7 @@
  * Plugin Name: Sica Product Models
  * Plugin URI: https://sica.com.br
  * Description: Plugin próprio para gerenciar modelos de produto no WooCommerce.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Grifo Agency
  * Author URI: https://grifo.agency
  * Text Domain: sica-product-models
@@ -29,7 +29,7 @@ $spm_update_checker = YahnisElsts\PluginUpdateChecker\v5p7\PucFactory::buildUpda
 $spm_update_checker->setBranch( 'main' );
 
 if ( ! defined( 'SPM_VERSION' ) ) {
-	define( 'SPM_VERSION', '0.1.0' );
+	define( 'SPM_VERSION', '0.1.1' );
 }
 
 if ( ! defined( 'SPM_FILE' ) ) {
