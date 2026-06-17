@@ -17,6 +17,7 @@ sitemap.xml.gz
 # Plugin development
 node_modules/
 vendor/
+!includes/Vendor/
 composer.lock
 package-lock.json
 yarn.lock

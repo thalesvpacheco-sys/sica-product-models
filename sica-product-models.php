@@ -18,6 +18,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
+require_once plugin_dir_path( __FILE__ ) . 'includes/Vendor/plugin-update-checker/load-v5p7.php';
+
+$spm_update_checker = YahnisElsts\PluginUpdateChecker\v5p7\PucFactory::buildUpdateChecker(
+	'https://github.com/thalesvpacheco-sys/sica-product-models',
+	__FILE__,
+	'sica-product-models'
+);
+
+$spm_update_checker->setBranch( 'main' );
+
 if ( ! defined( 'SPM_VERSION' ) ) {
 	define( 'SPM_VERSION', '0.1.0' );
 }
